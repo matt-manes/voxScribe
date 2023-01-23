@@ -1,4 +1,4 @@
-# voxScribe
+# voxscribe
 Extract text from .wav and .mp3 files. <br>
 Install with:
 <pre>pip install voxscribe</pre>
