@@ -6,15 +6,9 @@ build-backend = "hatchling.build"
 name = "voxscribe"
 authors = [{name='Matt Manes'}]
 description = "Extract text from .wav and .mp3 files."
-version = "1.0.0"
+version = "1.0.1"
 requires-python = ">=3.10"
-dependencies = [
-
-	"requests~=2.28.1",
-	"speechRecognition",
-	"pydub~=0.25.1",
-	"whosyouragent~=1.0.1"
-]
+dependencies = ["requests", "speechRecognition", "pydub", "whosyouragent", "pytest"]
 readme = "README.md"
 keywords = [
 	"text",
