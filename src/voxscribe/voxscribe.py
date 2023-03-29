@@ -1,12 +1,11 @@
+import base64
 import os
 from datetime import datetime
 from pathlib import Path
-import base64
 
 import requests
 import speech_recognition
 from pydub import AudioSegment
-
 from whosyouragent import get_agent
 
 root = Path(__file__).parent
