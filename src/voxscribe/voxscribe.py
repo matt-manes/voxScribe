@@ -1,6 +1,7 @@
 import os
 from datetime import datetime
 from pathlib import Path
+import base64
 
 import requests
 import speech_recognition
@@ -20,8 +21,7 @@ def download_audio_file(url: str, file_ext: str) -> Path:
 
     :param file_ext: Can be either '.mp3' or '.wav'.
 
-    Returns a Path object for the
-    saved file."""
+    Returns a Path object for the saved file."""
     dest = root / "audio"
     dest.mkdir(parents=True, exist_ok=True)
     filepath = (dest / str(datetime.now().timestamp())).with_suffix(file_ext)
@@ -29,6 +29,21 @@ def download_audio_file(url: str, file_ext: str) -> Path:
     print(f"{source.status_code=}")
     with filepath.open("wb") as file:
         file.write(source.content)
+    return filepath
+
+
+def base64_to_audiofile(src: str, file_ext: str) -> Path:
+    """Convert and save base64 string to an audio file.
+
+    :param src: The base64 encoded string.
+
+    :param file_ext: Can be either '.mp3' or '.wav'.
+
+    Returns a Path object for the saved file."""
+    dest = root / "audio"
+    dest.mkdir(parents=True, exist_ok=True)
+    filepath = (dest / str(datetime.now().timestamp())).with_suffix(file_ext)
+    filepath.write_bytes(base64.b64decode(src))
     return filepath
 
 
@@ -72,6 +87,20 @@ def get_text_from_MP3(MP3path: Path | str) -> str:
     """Returns text from an mp3 file
     located at the give file path."""
     return get_text_from_WAV(convert_MP3_to_WAV(MP3path))
+
+
+def get_text_from_base64(src: str, file_ext: str) -> str:
+    """Returns text from a base64 encoded audio string.
+
+    :param src: The base64 encoded auio.
+
+    :param file_ext: Can me '.mp3' or '.wav'."""
+    filepath = base64_to_audiofile(src, file_ext)
+    match file_ext:
+        case ".wav":
+            return get_text_from_WAV(filepath)
+        case ".mp3":
+            return get_text_from_MP3(filepath)
 
 
 def clean_up(max_age: int):
