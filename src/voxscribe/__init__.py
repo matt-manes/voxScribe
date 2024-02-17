@@ -6,7 +6,7 @@ from .voxscribe import (
     get_text_from_WAV,
 )
 
-__version__ = "1.1.1"
+__version__ = "1.1.2"
 __all__ = [
     "clean_up",
     "get_text_from_base64",

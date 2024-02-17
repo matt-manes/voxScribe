@@ -18,14 +18,27 @@
         <input id="togglestate" type="checkbox" aria-hidden="true" tabindex="-1">
         <div>
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
-        <h2>Submodules</h2>
-        <ul>
-                <li><a href="voxscribe/voxscribe.html">voxscribe</a></li>
-        </ul>
+
+        <h2>API Documentation</h2>
+            <ul class="memberlist">
+            <li>
+                    <a class="function" href="#clean_up">clean_up</a>
+            </li>
+            <li>
+                    <a class="function" href="#get_text_from_base64">get_text_from_base64</a>
+            </li>
+            <li>
+                    <a class="function" href="#get_text_from_MP3">get_text_from_MP3</a>
+            </li>
+            <li>
+                    <a class="function" href="#get_text_from_url">get_text_from_url</a>
+            </li>
+            <li>
+                    <a class="function" href="#get_text_from_WAV">get_text_from_WAV</a>
+            </li>
+    </ul>
 
 
 
@@ -46,196 +59,187 @@ voxscribe    </h1>
 
                         <label class="view-source-button" for="mod-voxscribe-view-source"><span>View Source</span></label>
 
-                        <div class="pdoc-code codehilite"><pre><span></span><span id="L-1"><a href="#L-1"><span class="linenos">1</span></a><span class="kn">from</span> <span class="nn">.voxscribe</span> <span class="kn">import</span> <span class="p">(</span><span class="n">clean_up</span><span class="p">,</span> <span class="n">get_text_from_base64</span><span class="p">,</span> <span class="n">get_text_from_MP3</span><span class="p">,</span>
-</span><span id="L-2"><a href="#L-2"><span class="linenos">2</span></a>                        <span class="n">get_text_from_url</span><span class="p">,</span> <span class="n">get_text_from_WAV</span><span class="p">)</span>
-</span><span id="L-3"><a href="#L-3"><span class="linenos">3</span></a>
-</span><span id="L-4"><a href="#L-4"><span class="linenos">4</span></a><span class="sd">&quot;&quot;&quot; FFMPEG needs to be installed and in your PATH for this module to work. &quot;&quot;&quot;</span>
-</span><span id="L-5"><a href="#L-5"><span class="linenos">5</span></a><span class="n">clean_up</span><span class="p">(</span><span class="n">max_age</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+                        <div class="pdoc-code codehilite"><pre><span></span><span id="L-1"><a href="#L-1"><span class="linenos"> 1</span></a><span class="kn">from</span> <span class="nn">.voxscribe</span> <span class="kn">import</span> <span class="p">(</span>
+</span><span id="L-2"><a href="#L-2"><span class="linenos"> 2</span></a>    <span class="n">clean_up</span><span class="p">,</span>
+</span><span id="L-3"><a href="#L-3"><span class="linenos"> 3</span></a>    <span class="n">get_text_from_base64</span><span class="p">,</span>
+</span><span id="L-4"><a href="#L-4"><span class="linenos"> 4</span></a>    <span class="n">get_text_from_MP3</span><span class="p">,</span>
+</span><span id="L-5"><a href="#L-5"><span class="linenos"> 5</span></a>    <span class="n">get_text_from_url</span><span class="p">,</span>
+</span><span id="L-6"><a href="#L-6"><span class="linenos"> 6</span></a>    <span class="n">get_text_from_WAV</span><span class="p">,</span>
+</span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="p">)</span>
+</span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a>
+</span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a><span class="n">__version__</span> <span class="o">=</span> <span class="s2">&quot;1.1.2&quot;</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a>    <span class="s2">&quot;clean_up&quot;</span><span class="p">,</span>
+</span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>    <span class="s2">&quot;get_text_from_base64&quot;</span><span class="p">,</span>
+</span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>    <span class="s2">&quot;get_text_from_MP3&quot;</span><span class="p">,</span>
+</span><span id="L-14"><a href="#L-14"><span class="linenos">14</span></a>    <span class="s2">&quot;get_text_from_url&quot;</span><span class="p">,</span>
+</span><span id="L-15"><a href="#L-15"><span class="linenos">15</span></a>    <span class="s2">&quot;get_text_from_WAV&quot;</span><span class="p">,</span>
+</span><span id="L-16"><a href="#L-16"><span class="linenos">16</span></a><span class="p">]</span>
+</span><span id="L-17"><a href="#L-17"><span class="linenos">17</span></a><span class="sd">&quot;&quot;&quot; FFMPEG needs to be installed and in your PATH for this module to work. &quot;&quot;&quot;</span>
+</span><span id="L-18"><a href="#L-18"><span class="linenos">18</span></a><span class="n">clean_up</span><span class="p">(</span><span class="n">max_age</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 </span></pre></div>
 
 
             </section>
+                <section id="clean_up">
+                            <input id="clean_up-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">clean_up</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">max_age</span><span class="p">:</span> <span class="nb">int</span></span><span class="return-annotation">):</span></span>
+
+                <label class="view-source-button" for="clean_up-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#clean_up"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="clean_up-109"><a href="#clean_up-109"><span class="linenos">109</span></a><span class="k">def</span> <span class="nf">clean_up</span><span class="p">(</span><span class="n">max_age</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+</span><span id="clean_up-110"><a href="#clean_up-110"><span class="linenos">110</span></a>    <span class="sd">&quot;&quot;&quot;Removes any files from the audio directory</span>
+</span><span id="clean_up-111"><a href="#clean_up-111"><span class="linenos">111</span></a><span class="sd">    older than max_age minutes.&quot;&quot;&quot;</span>
+</span><span id="clean_up-112"><a href="#clean_up-112"><span class="linenos">112</span></a>    <span class="n">audiopath</span> <span class="o">=</span> <span class="n">root</span> <span class="o">/</span> <span class="s2">&quot;audio&quot;</span>
+</span><span id="clean_up-113"><a href="#clean_up-113"><span class="linenos">113</span></a>    <span class="k">if</span> <span class="n">audiopath</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+</span><span id="clean_up-114"><a href="#clean_up-114"><span class="linenos">114</span></a>        <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">audiopath</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;*.*&quot;</span><span class="p">):</span>
+</span><span id="clean_up-115"><a href="#clean_up-115"><span class="linenos">115</span></a>            <span class="k">if</span> <span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">timestamp</span><span class="p">()</span> <span class="o">-</span> <span class="n">os</span><span class="o">.</span><span class="n">stat</span><span class="p">(</span><span class="n">file</span><span class="p">)</span><span class="o">.</span><span class="n">st_ctime</span><span class="p">)</span> <span class="o">&gt;</span> <span class="p">(</span><span class="mi">60</span> <span class="o">*</span> <span class="n">max_age</span><span class="p">):</span>
+</span><span id="clean_up-116"><a href="#clean_up-116"><span class="linenos">116</span></a>                <span class="n">file</span><span class="o">.</span><span class="n">unlink</span><span class="p">()</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>Removes any files from the audio directory
+older than max_age minutes.</p>
+</div>
+
+
+                </section>
+                <section id="get_text_from_base64">
+                            <input id="get_text_from_base64-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">get_text_from_base64</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">src</span><span class="p">:</span> <span class="nb">str</span>, </span><span class="param"><span class="n">file_ext</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="nb">str</span>:</span></span>
+
+                <label class="view-source-button" for="get_text_from_base64-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#get_text_from_base64"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="get_text_from_base64-93"><a href="#get_text_from_base64-93"><span class="linenos"> 93</span></a><span class="k">def</span> <span class="nf">get_text_from_base64</span><span class="p">(</span><span class="n">src</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">file_ext</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span><span id="get_text_from_base64-94"><a href="#get_text_from_base64-94"><span class="linenos"> 94</span></a>    <span class="sd">&quot;&quot;&quot;Returns text from a base64 encoded audio string.</span>
+</span><span id="get_text_from_base64-95"><a href="#get_text_from_base64-95"><span class="linenos"> 95</span></a>
+</span><span id="get_text_from_base64-96"><a href="#get_text_from_base64-96"><span class="linenos"> 96</span></a><span class="sd">    :param src: The base64 encoded auio.</span>
+</span><span id="get_text_from_base64-97"><a href="#get_text_from_base64-97"><span class="linenos"> 97</span></a>
+</span><span id="get_text_from_base64-98"><a href="#get_text_from_base64-98"><span class="linenos"> 98</span></a><span class="sd">    :param file_ext: Can me &#39;.mp3&#39; or &#39;.wav&#39;.&quot;&quot;&quot;</span>
+</span><span id="get_text_from_base64-99"><a href="#get_text_from_base64-99"><span class="linenos"> 99</span></a>    <span class="n">filepath</span> <span class="o">=</span> <span class="n">base64_to_audiofile</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">file_ext</span><span class="p">)</span>
+</span><span id="get_text_from_base64-100"><a href="#get_text_from_base64-100"><span class="linenos">100</span></a>    <span class="k">match</span> <span class="n">file_ext</span><span class="p">:</span>
+</span><span id="get_text_from_base64-101"><a href="#get_text_from_base64-101"><span class="linenos">101</span></a>        <span class="k">case</span> <span class="s2">&quot;.wav&quot;</span><span class="p">:</span>
+</span><span id="get_text_from_base64-102"><a href="#get_text_from_base64-102"><span class="linenos">102</span></a>            <span class="k">return</span> <span class="n">get_text_from_WAV</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
+</span><span id="get_text_from_base64-103"><a href="#get_text_from_base64-103"><span class="linenos">103</span></a>        <span class="k">case</span> <span class="s2">&quot;.mp3&quot;</span><span class="p">:</span>
+</span><span id="get_text_from_base64-104"><a href="#get_text_from_base64-104"><span class="linenos">104</span></a>            <span class="k">return</span> <span class="n">get_text_from_MP3</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
+</span><span id="get_text_from_base64-105"><a href="#get_text_from_base64-105"><span class="linenos">105</span></a>        <span class="k">case</span> <span class="k">_</span><span class="p">:</span>
+</span><span id="get_text_from_base64-106"><a href="#get_text_from_base64-106"><span class="linenos">106</span></a>            <span class="k">return</span> <span class="s2">&quot;&quot;</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>Returns text from a base64 encoded audio string.</p>
+
+<h6 id="parameters">Parameters</h6>
+
+<ul>
+<li><p><strong>src</strong>:  The base64 encoded auio.</p></li>
+<li><p><strong>file_ext</strong>:  Can me '.mp3' or '.wav'.</p></li>
+</ul>
+</div>
+
+
+                </section>
+                <section id="get_text_from_MP3">
+                            <input id="get_text_from_MP3-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">get_text_from_MP3</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">MP3path</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="nb">str</span>:</span></span>
+
+                <label class="view-source-button" for="get_text_from_MP3-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#get_text_from_MP3"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="get_text_from_MP3-87"><a href="#get_text_from_MP3-87"><span class="linenos">87</span></a><span class="k">def</span> <span class="nf">get_text_from_MP3</span><span class="p">(</span><span class="n">MP3path</span><span class="p">:</span> <span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span><span id="get_text_from_MP3-88"><a href="#get_text_from_MP3-88"><span class="linenos">88</span></a>    <span class="sd">&quot;&quot;&quot;Returns text from an mp3 file</span>
+</span><span id="get_text_from_MP3-89"><a href="#get_text_from_MP3-89"><span class="linenos">89</span></a><span class="sd">    located at the give file path.&quot;&quot;&quot;</span>
+</span><span id="get_text_from_MP3-90"><a href="#get_text_from_MP3-90"><span class="linenos">90</span></a>    <span class="k">return</span> <span class="n">get_text_from_WAV</span><span class="p">(</span><span class="n">convert_MP3_to_WAV</span><span class="p">(</span><span class="n">MP3path</span><span class="p">))</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>Returns text from an mp3 file
+located at the give file path.</p>
+</div>
+
+
+                </section>
+                <section id="get_text_from_url">
+                            <input id="get_text_from_url-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">get_text_from_url</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">url</span><span class="p">:</span> <span class="nb">str</span>, </span><span class="param"><span class="n">file_ext</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="nb">str</span>:</span></span>
+
+                <label class="view-source-button" for="get_text_from_url-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#get_text_from_url"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="get_text_from_url-62"><a href="#get_text_from_url-62"><span class="linenos">62</span></a><span class="k">def</span> <span class="nf">get_text_from_url</span><span class="p">(</span><span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">file_ext</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span><span id="get_text_from_url-63"><a href="#get_text_from_url-63"><span class="linenos">63</span></a>    <span class="sd">&quot;&quot;&quot;Returns text from an mp3 file</span>
+</span><span id="get_text_from_url-64"><a href="#get_text_from_url-64"><span class="linenos">64</span></a><span class="sd">    located at the given url.</span>
+</span><span id="get_text_from_url-65"><a href="#get_text_from_url-65"><span class="linenos">65</span></a>
+</span><span id="get_text_from_url-66"><a href="#get_text_from_url-66"><span class="linenos">66</span></a><span class="sd">    :param file_ext: Can be either &#39;.mp3&#39; or &#39;.wav&#39;&quot;&quot;&quot;</span>
+</span><span id="get_text_from_url-67"><a href="#get_text_from_url-67"><span class="linenos">67</span></a>    <span class="n">audiopath</span> <span class="o">=</span> <span class="n">download_audio_file</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">file_ext</span><span class="p">)</span>
+</span><span id="get_text_from_url-68"><a href="#get_text_from_url-68"><span class="linenos">68</span></a>    <span class="k">if</span> <span class="n">file_ext</span> <span class="o">==</span> <span class="s2">&quot;.mp3&quot;</span><span class="p">:</span>
+</span><span id="get_text_from_url-69"><a href="#get_text_from_url-69"><span class="linenos">69</span></a>        <span class="k">return</span> <span class="n">get_text_from_WAV</span><span class="p">(</span><span class="n">convert_MP3_to_WAV</span><span class="p">(</span><span class="n">audiopath</span><span class="p">))</span>
+</span><span id="get_text_from_url-70"><a href="#get_text_from_url-70"><span class="linenos">70</span></a>    <span class="k">elif</span> <span class="n">file_ext</span> <span class="o">==</span> <span class="s2">&quot;.wav&quot;</span><span class="p">:</span>
+</span><span id="get_text_from_url-71"><a href="#get_text_from_url-71"><span class="linenos">71</span></a>        <span class="k">return</span> <span class="n">get_text_from_WAV</span><span class="p">(</span><span class="n">audiopath</span><span class="p">)</span>
+</span><span id="get_text_from_url-72"><a href="#get_text_from_url-72"><span class="linenos">72</span></a>    <span class="k">else</span><span class="p">:</span>
+</span><span id="get_text_from_url-73"><a href="#get_text_from_url-73"><span class="linenos">73</span></a>        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;file_ext param must be &quot;.mp3&quot; or &quot;.wav&quot;&#39;</span><span class="p">)</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>Returns text from an mp3 file
+located at the given url.</p>
+
+<h6 id="parameters">Parameters</h6>
+
+<ul>
+<li><strong>file_ext</strong>:  Can be either '.mp3' or '.wav'</li>
+</ul>
+</div>
+
+
+                </section>
+                <section id="get_text_from_WAV">
+                            <input id="get_text_from_WAV-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">get_text_from_WAV</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">WAVpath</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span></span><span class="return-annotation">) -> <span class="n">Any</span>:</span></span>
+
+                <label class="view-source-button" for="get_text_from_WAV-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#get_text_from_WAV"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="get_text_from_WAV-76"><a href="#get_text_from_WAV-76"><span class="linenos">76</span></a><span class="k">def</span> <span class="nf">get_text_from_WAV</span><span class="p">(</span><span class="n">WAVpath</span><span class="p">:</span> <span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+</span><span id="get_text_from_WAV-77"><a href="#get_text_from_WAV-77"><span class="linenos">77</span></a>    <span class="sd">&quot;&quot;&quot;Returns text from a wav file</span>
+</span><span id="get_text_from_WAV-78"><a href="#get_text_from_WAV-78"><span class="linenos">78</span></a><span class="sd">    located at the give file path.&quot;&quot;&quot;</span>
+</span><span id="get_text_from_WAV-79"><a href="#get_text_from_WAV-79"><span class="linenos">79</span></a>    <span class="n">WAVpath</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">WAVpath</span><span class="p">)</span>
+</span><span id="get_text_from_WAV-80"><a href="#get_text_from_WAV-80"><span class="linenos">80</span></a>    <span class="n">recognizer</span> <span class="o">=</span> <span class="n">speech_recognition</span><span class="o">.</span><span class="n">Recognizer</span><span class="p">()</span>
+</span><span id="get_text_from_WAV-81"><a href="#get_text_from_WAV-81"><span class="linenos">81</span></a>    <span class="k">with</span> <span class="n">speech_recognition</span><span class="o">.</span><span class="n">AudioFile</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">WAVpath</span><span class="p">))</span> <span class="k">as</span> <span class="n">source</span><span class="p">:</span>
+</span><span id="get_text_from_WAV-82"><a href="#get_text_from_WAV-82"><span class="linenos">82</span></a>        <span class="n">audio</span> <span class="o">=</span> <span class="n">recognizer</span><span class="o">.</span><span class="n">record</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+</span><span id="get_text_from_WAV-83"><a href="#get_text_from_WAV-83"><span class="linenos">83</span></a>        <span class="n">text</span> <span class="o">=</span> <span class="n">recognizer</span><span class="o">.</span><span class="n">recognize_google</span><span class="p">(</span><span class="n">audio</span><span class="p">)</span>
+</span><span id="get_text_from_WAV-84"><a href="#get_text_from_WAV-84"><span class="linenos">84</span></a>    <span class="k">return</span> <span class="n">text</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>Returns text from a wav file
+located at the give file path.</p>
+</div>
+
+
+                </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value">${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>
