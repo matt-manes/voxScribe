@@ -40,5 +40,8 @@ exclude = [
     "*.mp3",
     "*.wav",
     "audio",
-    "tests"
+    "tests",
+    "htmlcov",
+    "docs",
+    "*.md"
 ]

@@ -2,11 +2,11 @@ import base64
 import os
 from datetime import datetime
 from pathlib import Path
+from typing import Any
 
 import requests
 import speech_recognition
 from pydub import AudioSegment
-
 from whosyouragent import get_agent
 
 root = Path(__file__).parent
@@ -52,9 +52,9 @@ def convert_MP3_to_WAV(MP3path: Path | str) -> Path:
     of the same name and returns a Path object
     for the wav file."""
     MP3path = Path(MP3path)
-    audio = AudioSegment.from_mp3(MP3path)
+    audio = AudioSegment.from_mp3(MP3path)  # type:ignore
     WAVpath = MP3path.with_suffix(".wav")
-    audio.export(WAVpath, format="wav")
+    audio.export(WAVpath, format="wav")  # type:ignore
     return WAVpath
 
 
@@ -72,7 +72,7 @@ def get_text_from_url(url: str, file_ext: str) -> str:
         raise Exception('file_ext param must be ".mp3" or ".wav"')
 
 
-def get_text_from_WAV(WAVpath: Path | str) -> str:
+def get_text_from_WAV(WAVpath: Path | str) -> Any:
     """Returns text from a wav file
     located at the give file path."""
     WAVpath = Path(WAVpath)
@@ -101,6 +101,8 @@ def get_text_from_base64(src: str, file_ext: str) -> str:
             return get_text_from_WAV(filepath)
         case ".mp3":
             return get_text_from_MP3(filepath)
+        case _:
+            return ""
 
 
 def clean_up(max_age: int):
